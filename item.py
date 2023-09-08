@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Float
-from database import Base, Session
+from database import Base
 
 class Item(Base):
     __tablename__ = 'items'
@@ -14,17 +14,14 @@ class Item(Base):
         self.price = price
         self.shopping_list_id = shopping_list_id
 
-    def save(self):
-        session = Session()
+    def save(self, session):
         session.add(self)
         session.commit()
 
     @staticmethod
-    def get_by_id(item_id):
-        session = Session()
+    def get_by_id(item_id, session):
         return session.query(Item).get(item_id)
 
-    def delete(self):
-        session = Session()
+    def delete(self, session):
         session.delete(self)
         session.commit()

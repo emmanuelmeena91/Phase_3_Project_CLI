@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
+
 from database import Base, Session
 
 class ShoppingList(Base):
@@ -19,7 +20,8 @@ class ShoppingList(Base):
         session.add(self)
         session.commit()
 
-    @staticmethod
-    def get_all():
+    @classmethod
+    def get_all(cls):
         session = Session()
-        return session.query(ShoppingList).all()
+        return session.query(cls).all()
+    
