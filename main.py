@@ -41,7 +41,7 @@ def remove_item(session):
         print("Item not found.")
 
 def display_shopping_lists(session):
-    shopping_lists = ShoppingList.get_all()
+    shopping_lists = ShoppingList.get_all() 
     for shopping_list in shopping_lists:
         print(f"Shopping List ID: {shopping_list.id}")
         print(f"Name: {shopping_list.name}")
